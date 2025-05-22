@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgModule } from '@angular/core';
 import { BookListComponent } from './pages/books/book-list/book-list.component';
+import { AddBookComponent } from './pages/books/add-book/add-book.component';
 
 export const routes: Routes = [
      {
@@ -9,6 +10,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: BookListComponent },
+      { path: 'add-book', component: AddBookComponent },
     ]
   }
 ];

@@ -1,1 +1,56 @@
-<p>book-list works!</p>
+<h2 class="text-xl font-bold mb-4">Book List</h2>
+<div class="flex justify-between">
+  <div>saf</div>
+  <div class="flex items-center gap-2">
+    <a
+      (click)="goToAddBook()"
+      class="bg-[#769fff73] bg-opacity-30 font-poppins cursor-pointer text-[14px] font-semibold leading-[22px] px-4 py-2 rounded-[20px] min-w-[80px] items-center justify-center gap-2 text-[#10275E] hidden md:flex hover:opacity-70">
+      <span>Add New Book</span>
+    </a>
+
+  </div>
+</div>
+<div *ngIf="loading">Loading...</div>
+
+<div *ngIf="error" class="text-red-500">{{ error }}</div>
+
+<div *ngIf="!loading && !error">
+  <div class="relative overflow-x-auto sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 ">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Title</th>
+          <th scope="col" class="px-6 py-3">Author</th>
+          <th scope="col" class="px-6 py-3">ISBN</th>
+          <th scope="col" class="px-6 py-3">Publication Date</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of books"
+          class="bg-white  border-b  border-gray-200">
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+            {{ todo.id }}
+          </td>
+          <td class="px-6 py-4">
+            {{ todo.title }}
+          </td>
+          <td class="px-6 py-4">
+            {{ todo.author }}
+          </td>
+          <td class="px-6 py-4">
+            {{ todo.isbn }}
+          </td>
+          <td class="px-6 py-4">
+            {{ todo.publicationDate | date }}
+          </td>
+          <td class="px-6 py-4">
+            <a href="#"
+              class="font-medium text-blue-600  hover:underline">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
