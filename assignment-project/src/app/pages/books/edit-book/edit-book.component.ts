@@ -7,12 +7,12 @@ import { BookService } from '../../../services/book.service';
 @Component({
   selector: 'app-edit-book',
   standalone: true,
-imports: [FormsModule],
+  imports: [FormsModule],
   templateUrl: './edit-book.component.html',
-  styleUrl: './edit-book.component.css'
+  styleUrl: './edit-book.component.css',
 })
-export class EditBookComponent implements OnInit{
-    book: any = {};
+export class EditBookComponent implements OnInit {
+  book: any = {};
   id: number = 0;
 
   constructor(
@@ -22,18 +22,27 @@ export class EditBookComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+
+    //get book id
     this.id = +this.route.snapshot.paramMap.get('id')!;
+
+    // Fetch the book details using the service
     this.bookService.getBookById(this.id).subscribe({
-      next: (data) => this.book = data,
-      error: () => Swal.fire('Error', 'Failed to load book', 'error')
+      next: (data) => (this.book = data),
+      error: () => Swal.fire('Error', 'Failed to load book', 'error'),
     });
   }
 
+  // updated book data function
   onSubmit(form: any) {
-     if (!this.book.title.trim() || !this.book.author.trim() || !this.book.isbn.trim()) {
-        Swal.fire('Error', 'Please fill in all required fields', 'error');
-        return;
-      }
+    if (
+      !this.book.title.trim() ||
+      !this.book.author.trim() ||
+      !this.book.isbn.trim()
+    ) {
+      Swal.fire('Error', 'Please fill in all required fields', 'error');
+      return;
+    }
 
     this.bookService.updateBook(this.id, this.book).subscribe({
       next: () => {
@@ -42,19 +51,19 @@ export class EditBookComponent implements OnInit{
           title: 'Book Updated',
           text: 'Book details has been added successfully!',
           confirmButtonColor: '#3085d6',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
         }).then(() => {
           this.router.navigate(['/']);
         });
       },
       error: () => {
         Swal.fire('Error', 'Failed to update book', 'error');
-      }
+      },
     });
   }
 
+  // Navigates back to the home page
   cancel() {
     this.router.navigate(['/']);
   }
-
 }

@@ -23,6 +23,8 @@ export class AddBookComponent {
 
   constructor(private bookService: BookService, private router: Router) {}
 
+
+  //add book function
   onSubmit() {
      if (!this.newBook.title.trim() || !this.newBook.author.trim()) {
     Swal.fire('Error', 'Please fill in all required fields', 'error');
@@ -57,5 +59,10 @@ export class AddBookComponent {
       author: '',
       isbn: '',
     };
+  }
+
+    // Navigates back to the home page
+  back() {
+    this.router.navigate(['/']);
   }
 }

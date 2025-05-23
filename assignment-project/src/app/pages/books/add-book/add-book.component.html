@@ -1,8 +1,11 @@
-
-<span
-    class="font-poppins font-medium text-[16px] md:text-[22px]  text-[#64728C] ">
+<a (click)="back()"
+    class="font-poppins cursor-pointer font-medium text-[14px] md:text-[16px]  text-[#64728C] ">
+    Back
+</a>
+<div
+    class="font-poppins font-medium text-[16px] md:text-[22px]  text-[#64728C] mt-4">
     Add New Book
-</span>
+</div>
 
 <form (ngSubmit)="onSubmit()" #bookForm="ngForm" class="space-y-4 mt-10">
     <div class="md:flex md:w-[70%] w-full ">

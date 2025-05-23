@@ -1,7 +1,12 @@
-<span
-    class="font-poppins font-medium text-[16px] md:text-[22px]  text-[#64728C] ">
-    Add New Book
-</span>
+<a (click)="cancel()"
+    class="font-poppins cursor-pointer font-medium text-[14px] md:text-[16px]  text-[#64728C] ">
+    Back
+</a>
+
+<div
+    class="font-poppins font-medium text-[16px] md:text-[22px]  text-[#64728C] mt-4">
+    Edit Book Details
+</div>
 
 <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)"
     class="space-y-4 mt-10">

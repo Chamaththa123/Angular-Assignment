@@ -19,16 +19,20 @@ export class BookListComponent implements OnInit {
 
   constructor(private bookService: BookService, private router: Router) {}
 
+  //navigate add book page
   goToAddBook() {
     this.router.navigate(['/add-book']);
   }
 
+  //navigate edit page
   goToEditBook(id: number) {
     this.router.navigate(['/edit', id]);
   }
 
   ngOnInit(): void {
     this.loading = true;
+
+    //get all books function
     this.bookService.getBooks().subscribe({
       next: (data) => {
         this.books = data;
@@ -41,6 +45,7 @@ export class BookListComponent implements OnInit {
     });
   }
 
+  //delete book function
   deleteBook(id: number) {
     Swal.fire({
       title: 'Are you sure?',
