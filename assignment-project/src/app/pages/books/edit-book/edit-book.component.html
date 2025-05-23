@@ -1,0 +1,68 @@
+<span
+    class="font-poppins font-medium text-[16px] md:text-[22px]  text-[#64728C] ">
+    Add New Book
+</span>
+
+<form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)"
+    class="space-y-4 mt-10">
+    <div class="md:flex md:w-[70%] w-full ">
+        <div class="md:w-[50%] w-full">
+            <p
+                class="font-poppins text-[14px] md:text-[16px] leading-[24px] font-medium text-[#64728C]">
+                Book Title *
+            </p>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                [(ngModel)]="book.title"
+                #titleRef="ngModel"
+                class="block rounded-[15px] focus:outline-[#bdbdbd] md:w-[90%]  border-0 py-2.5 pl-3 text-gray-900 ring-1 ring-inset mt-2 ring-gray-300 placeholder:text-[#64728C]-400 placeholder:text-[14px] md:placeholder:text-[14px] placeholder:poppins focus:ring-1 focus:ring-inset sm:leading-6 w-full text-[14px] md:text-[15px] font-medium font-poppins" />
+        </div>
+        <div class="md:w-[50%] w-full">
+            <p
+                class="font-poppins text-[14px] md:text-[16px] leading-[24px] font-medium text-[#64728C]">
+                Book Author *
+            </p>
+            <input
+                type="text"
+                id="author"
+                name="author"
+                [(ngModel)]="book.author"
+                #titleRef="ngModel"
+                class="block rounded-[15px] focus:outline-[#bdbdbd] md:w-[90%]  border-0 py-2.5 pl-3 text-gray-900 ring-1 ring-inset mt-2 ring-gray-300 placeholder:text-[#64728C]-400 placeholder:text-[14px] md:placeholder:text-[14px] placeholder:poppins focus:ring-1 focus:ring-inset sm:leading-6 w-full text-[14px] md:text-[15px] font-medium font-poppins" />
+        </div>
+    </div>
+    <div class="md:flex md:w-[70%]  w-full ">
+        <div class="md:w-[50%] w-full">
+            <p
+                class="font-poppins text-[14px] md:text-[16px] leading-[24px] font-medium text-[#64728C]">
+                Book ISBN *
+            </p>
+            <input
+                type="text"
+                name="isbn"
+                [(ngModel)]="book.isbn"
+                class="block rounded-[15px] focus:outline-[#bdbdbd] md:w-[90%]  border-0 py-2.5 pl-3 text-gray-900 ring-1 ring-inset mt-2 ring-gray-300 placeholder:text-[#64728C]-400 placeholder:text-[14px] md:placeholder:text-[14px] placeholder:poppins focus:ring-1 focus:ring-inset sm:leading-6 w-full text-[14px] md:text-[15px] font-medium font-poppins" />
+        </div>
+
+    </div>
+    <div
+        class="font-poppins font-normal text-[12px] leading-[18px] text-[#64728C] text-opacity-70 md:mt-8 mt-5">
+        *Required Field
+    </div>
+
+    <div class="flex justify-left gap-5 md:mt-0 mt-7 md:w-[70%] w-full">
+        <button
+            class="bg-white cursor-pointer font-poppins text-[14px] font-semibold leading-[22px] px-4 py-2 rounded-[20px] min-w-[80px] hover:bg-[#263679] hover:text-white text-[#263679] border border-[#263679] transition-all duration-300 flex items-center gap-2 justify-center"
+            type="submit"
+            (click)="cancel()">
+            Cancel
+        </button>
+        <button
+            class="bg-[#263679] cursor-pointer font-poppins text-[14px] font-semibold leading-[22px] px-4 py-2 rounded-[20px] min-w-[80px] hover:bg-[#374D66] hover:text-white text-white border border-[#263679] transition-all duration-300 flex items-center gap-2 justify-center"
+            type="submit">
+            Save
+        </button>
+    </div>
+</form>

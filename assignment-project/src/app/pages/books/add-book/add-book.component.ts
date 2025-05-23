@@ -33,7 +33,7 @@ export class AddBookComponent {
         Swal.fire({
           icon: 'success',
           title: 'Book Added',
-          text: 'Your book has been added successfully!',
+          text: 'New book has been added successfully!',
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'OK'
         }).then(() => {

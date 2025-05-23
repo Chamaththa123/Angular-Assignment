@@ -1,6 +1,8 @@
-<h2 class="text-xl font-bold mb-4">Book List</h2>
-<div class="flex justify-between">
-  <div>saf</div>
+<span
+  class="font-poppins font-semibold text-[18px] md:text-[22px]  text-[#64728C] ">
+  All Books
+</span>
+<div class="flex justify-end">
   <div class="flex items-center gap-2">
     <a
       (click)="goToAddBook()"
@@ -10,47 +12,59 @@
 
   </div>
 </div>
-<div *ngIf="loading">Loading...</div>
+<div *ngIf="loading" class="text-center text-gray-500 py-6">Loading...</div>
 
-<div *ngIf="error" class="text-red-500">{{ error }}</div>
+<div *ngIf="error" class="text-center text-red-500 py-6">{{ error }}</div>
+<ng-template #noBooks>
+  <div class="text-center text-gray-500 py-6">No books available.</div>
+</ng-template>
 
 <div *ngIf="!loading && !error">
-  <div class="relative overflow-x-auto sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-100 ">
-        <tr>
-          <th scope="col" class="px-6 py-3">ID</th>
-          <th scope="col" class="px-6 py-3">Title</th>
-          <th scope="col" class="px-6 py-3">Author</th>
-          <th scope="col" class="px-6 py-3">ISBN</th>
-          <th scope="col" class="px-6 py-3">Publication Date</th>
-          <th scope="col" class="px-6 py-3">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let todo of books"
-          class="bg-white  border-b  border-gray-200">
-          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-            {{ todo.id }}
-          </td>
-          <td class="px-6 py-4">
-            {{ todo.title }}
-          </td>
-          <td class="px-6 py-4">
-            {{ todo.author }}
-          </td>
-          <td class="px-6 py-4">
-            {{ todo.isbn }}
-          </td>
-          <td class="px-6 py-4">
-            {{ todo.publicationDate | date }}
-          </td>
-          <td class="px-6 py-4">
-            <a href="#"
-              class="font-medium text-blue-600  hover:underline">Edit</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div *ngIf="books.length > 0; else noBooks">
+    <div class="relative overflow-x-auto sm:rounded-lg mt-8">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+        <thead class="text-[14px] text-gray-600 uppercase bg-gray-100 ">
+          <tr>
+            <th scope="col" class="px-6 py-3">ID</th>
+            <th scope="col" class="px-6 py-3">Title</th>
+            <th scope="col" class="px-6 py-3">Author</th>
+            <th scope="col" class="px-6 py-3">ISBN</th>
+            <th scope="col" class="px-6 py-3">Publication Date</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books"
+            class="bg-white  border-b  border-gray-200 text-[#64728C] text-[14px]">
+            <td class="px-6 py-4 font-medium  whitespace-nowrap ">
+              B{{ book.id }}
+            </td>
+            <td class="px-6 py-4">
+              {{ book.title }}
+            </td>
+            <td class="px-6 py-4">
+              {{ book.author }}
+            </td>
+            <td class="px-6 py-4">
+              {{ book.isbn }}
+            </td>
+            <td class="px-6 py-4">
+              {{ book.publicationDate | date }}
+            </td>
+            <td class="px-6 py-4">
+              <a (click)="goToEditBook(book.id)"
+                class="font-medium text-blue-600 cursor-pointer mr-3">
+                Edit
+              </a>
+              <a (click)="deleteBook(book.id)"
+                class="font-medium text-red-600  cursor-pointer">
+                Delete
+              </a>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
