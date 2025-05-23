@@ -233,6 +233,12 @@
   "components": {
     "schemas": {
       "Book": {
+        "required": [
+          "author",
+          "isbn",
+          "publicationDate",
+          "title"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -240,16 +246,16 @@
             "format": "int32"
           },
           "title": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "author": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "isbn": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "publicationDate": {
             "type": "string",
